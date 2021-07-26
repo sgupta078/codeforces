@@ -1,0 +1,39 @@
+#include <iostream>
+#include <string>
+#include <algorithm>
+ 
+using namespace std;
+ 
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string s;
+        cin>>s;
+        int n = s.size();
+        int count=0;
+        int min=0;
+        int i,j;
+        for(i=0;i<n;i++)
+        {
+            if(s[i]=='L')
+            {
+                for(j=i;j<n;j++)
+                {
+                    if(s[j]=='L')
+                        count++;
+                    if(s[j]!='L')
+                        break;
+                }
+                if(count>min)
+                    min=count;
+                count=0;
+                i=j-1;
+            }
+        }
+        cout<<min+1<<endl;
+    }
+    return 0;
+}
